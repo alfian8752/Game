@@ -40,7 +40,13 @@
 
 canvas {
   background-color: transparent;
-  border: 10px solid blue;
+  border: 1px solid blue;
   position: absolute;
-  top: 182px;
+  top: 179px;
+}
+
+
+
+#plant-img {
+  display: none;
 }

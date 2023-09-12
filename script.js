@@ -11,16 +11,26 @@ box.forEach(element => {
   element.addEventListener('onmouseover', () => console.log())
 });
 
-
+const plantImage = document.getElementById('plant-img')
 const plant = document.querySelectorAll('.plant');
 const canvas = document.querySelector('canvas');
 canvas.style.width = field.offsetWidth + "px";
 canvas.style.height = field.offsetHeight + "px";
-// ctx.style.top = field.offsetTop + "px";
 ctx = canvas.getContext('2d');
 
 class Plant {
   constructor(x, y, width, height) {
+    this.x = x
+    this.y = y
+    this.width = width
+    this.height = height
+  }
 
+  draw() {
+    // ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(plantImage, 10, 10, 30,15)
   }
 }
+
+const plants = new Plant();
+plants.draw()
