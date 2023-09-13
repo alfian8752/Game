@@ -23,7 +23,7 @@
 
 .plants {
   width: 450px;
-  height: 100px;
+  /* height: 100px; */
   background-color: rgb(124, 85, 85);
   padding: 5px;
 }
@@ -36,6 +36,8 @@
 
 .plant {
   background-color: wheat;
+  width: 15%;
+  height: fit-content;
 }
 
 canvas {
@@ -43,10 +45,15 @@ canvas {
   border: 1px solid blue;
   position: absolute;
   top: 179px;
+  display: none;
 }
 
 
 
 #plant-img {
-  display: none;
+  width: 100%;
 }
+
+/* #plant-drag {
+  position: absolute;
+} */

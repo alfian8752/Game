@@ -1,22 +1,23 @@
-const div = document.createElement('div');
-for (var i = 1; i < 45; i++) {
-  const field = document.getElementById('field')
-  div.className = "box";
-  div.id = i
-  field.appendChild(div.cloneNode(true));
-} 
-const box = document.querySelectorAll('.box');
-
-box.forEach(element => {
-  element.addEventListener('onmouseover', () => console.log())
-});
-
-const plantImage = document.getElementById('plant-img')
+const plantImage = document.getElementById('plant-img');
 const plant = document.querySelectorAll('.plant');
+const plantDrag = document.getElementById('plant-drag');
 const canvas = document.querySelector('canvas');
 canvas.style.width = field.offsetWidth + "px";
 canvas.style.height = field.offsetHeight + "px";
 ctx = canvas.getContext('2d');
+
+
+const div = document.createElement('div');
+for (let i = 0; i < 5; i++) {
+  for (let j = 0; j < 9; j++) {
+    const field = document.getElementById('field')
+    div.className = "box";
+    div.id = i + "-" + j;
+    field.appendChild(div.cloneNode(true));
+  }
+}
+
+const boxField = document.querySelectorAll('.box');
 
 class Plant {
   constructor(x, y, width, height) {
@@ -27,10 +28,36 @@ class Plant {
   }
 
   draw() {
-    // ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(plantImage, 10, 10, 30,15)
+    // ctx.imageSmoothingEnabled = false;  
   }
 }
 
-const plants = new Plant();
-plants.draw()
+let plantTarget;
+
+window.addEventListener('mousedown', (e) => {
+  if (e.target == plantImage) {
+    plantTarget = e.target
+    console.log(plantTarget);
+  }
+});
+
+window.addEventListener('mouseup', (e) => {
+  if (plantTarget == plantImage) {
+    let box = document.getElementById(e.target.id);
+    let plant = plantImage.cloneNode(true);
+    let plantWidth = plantImage.offsetWidth;
+    let plantHeight = plantImage.offsetHeight;
+    let boxWidth = box.offsetWidth;
+    let boxHeight = box.offsetHeight;
+    plant.style.position = 'absolute';
+    plant.style.width = plantWidth + "px";
+    plant.style.top = box.offsetTop + ((boxHeight - plantHeight) / 2) + "px";
+    plant.style.left = box.offsetLeft + ((boxWidth - plantWidth) / 2) + "px";
+    box.appendChild(plant);
+    plantTarget = null;
+  }
+})
+
+// window.addEventListener('mousedown', (e) => {
+//   console.log(e.target);
+// })
