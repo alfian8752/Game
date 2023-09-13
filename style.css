@@ -48,12 +48,18 @@ canvas {
   display: none;
 }
 
-
+.bar {
+  display: flex;
+}
+.bar .skop {
+  height: 80px;
+  width: 80px;
+}
 
 #plant-img {
   width: 100%;
 }
 
-/* #plant-drag {
+#plant-drag {
   position: absolute;
-} */
+}
